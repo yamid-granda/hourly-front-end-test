@@ -8,20 +8,20 @@ function formatNumber(number) {
   return new Intl.NumberFormat('en-US', numberFormatConfig).format(number)
 }
 
+const scaleTranslatorsDic = {
+  kelvin: (grades) => ({
+    celsius: formatNumber(grades - KELVIN_CONSTANT),
+    kelvin: formatNumber(grades),
+  }),
+  celsius: (grades) => ({
+    celsius: formatNumber(grades), 
+    kelvin: formatNumber(grades + KELVIN_CONSTANT),
+  })
+}
+
 export default function ResultViewer({
   data
 }) {
-  const scaleTranslatorsDic = {
-    kelvin: (grades) => ({
-      celsius: formatNumber(grades - KELVIN_CONSTANT),
-      kelvin: formatNumber(grades),
-    }),
-    celsius: (grades) => ({
-      celsius: formatNumber(grades), 
-      kelvin: formatNumber(grades + KELVIN_CONSTANT),
-    })
-  }
-
   const temperatures = useMemo(() => {
     const grades = parseFloat(data.grades)
     const scaleTranslator = scaleTranslatorsDic[data.scale]
