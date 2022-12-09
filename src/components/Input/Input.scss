@@ -1,0 +1,50 @@
+.ss-input {
+  width: 100%;
+  position: relative;
+  border: $border-base;
+  background-color: $color-white;
+  border-radius: $border-radius-base;
+  display: flex;
+  transition: $transition-base;
+}
+
+.ss-input__input {
+  height: $input-height;
+  font-size: $font-size-sm;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  border-radius: $border-radius-base;
+  color: $color-text;
+  outline: $border-base;
+  outline-color: transparent;
+  padding: $input-padding;
+  transition: $transition-base;
+
+  &::placeholder {
+    color: $color-text-light;
+    opacity: 1; /* Firefox */
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+.ss-input--focus {
+  border-color: $color-primary;
+}
+
+.ss-input--append {
+  .ss-input__input {
+    padding-right: $input-height;
+  }
+}

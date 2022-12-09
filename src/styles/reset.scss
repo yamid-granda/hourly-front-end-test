@@ -1,0 +1,175 @@
+@import './index.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500&display=swap');
+
+// -------------------------------------------------
+// + Base Reset Styles
+// -------------------------------------------------
+
+// -------------------------------------------------
+// + Box sizing rules
+// -------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  letter-spacing: 0.01em;
+}
+
+// -------------------------------------------------
+// + Remove default margin
+// -------------------------------------------------
+
+// figure,
+// figcaption,
+// blockquote,
+// dl,
+// dd,
+// h1,
+// h2,
+// h3,
+// h4,
+// ul,
+// ol,
+// li {
+//   margin: 0;
+// }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: $color-body;
+  color: $color-text;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: $font-size-default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.35;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+// -------------------------------------------------
+// + Remove list styles on ul, ol elements with a class attribute
+// -------------------------------------------------
+
+ul,
+ol {
+  padding: 0 0 0 $spacing-6;
+}
+
+// -------------------------------------------------
+// + Make images easier to work with
+// -------------------------------------------------
+
+/* img {
+  max-width: 100%;
+  display: block;
+} */
+
+// -------------------------------------------------
+// + Inherit fonts for inputs and buttons
+// -------------------------------------------------
+
+input,
+// select,
+button,
+textarea {
+  font: inherit;
+}
+
+// -------------------------------------------------
+// + Anchors
+// -------------------------------------------------
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* a:visited {
+  color: var(--color-primary);
+}
+
+a:visited:hover {
+  color: var(--color-primary-hover);
+} */
+
+// -------------------------------------------------
+// + Headings
+// -------------------------------------------------
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: $text-margin;
+}
+
+h1 {
+  font-size: $font-size-lg;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+// Remove all animations and transitions for people that prefer not to see them
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// -------------------------------------------------
+// + Table
+// -------------------------------------------------
+
+th {
+  text-align: left;
+}
+
+th,
+td {
+  vertical-align: top;
+}
+
+// -------------------------------------------------
+// + Responsive
+// -------------------------------------------------
+
+/* @media (min-width: 600px) {
+  body {
+    font-size: 18px;
+  }
+
+  main {
+    padding: 1.5rem 3rem;
+  }
+} */
+
+#nprogress .bar {
+  min-height: $spacing-3;
+  background: $color-primary-hover;
+}

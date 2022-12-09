@@ -1,0 +1,16 @@
+.ss-result-viewer {
+  padding-top: $spacing-12;
+  border-top: $border-base;
+  text-align: center;
+}
+
+.ss-result_values {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.ss-result_value {
+  font-size: $font-size-md;
+  font-weight: $bold;
+}

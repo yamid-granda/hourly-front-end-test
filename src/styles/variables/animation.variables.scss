@@ -1,0 +1,7 @@
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+$animation-spin: spin 1s $timing-default infinite;

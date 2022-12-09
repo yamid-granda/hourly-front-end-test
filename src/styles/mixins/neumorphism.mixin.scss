@@ -1,0 +1,22 @@
+@mixin neumorphism($type: 'flat') {
+  // -------------------------------------------------
+  // + Variables
+  // -------------------------------------------------
+
+  $distance: 2px;
+  $blur: 2px;
+  $dark-shadow-color: var(--color-gray-7);
+  $light-shadow-color: $color-white;
+
+  // -------------------------------------------------
+  // + Styles
+  // -------------------------------------------------
+
+  @if $type == flat {
+    box-shadow: $distance $distance $blur $dark-shadow-color,
+      (-$distance) (-$distance) $blur $light-shadow-color;
+  } @else if $type == 'pressed' {
+    box-shadow: inset $distance $distance $blur $dark-shadow-color,
+      inset (-$distance) (-$distance) $blur $light-shadow-color;
+  }
+}

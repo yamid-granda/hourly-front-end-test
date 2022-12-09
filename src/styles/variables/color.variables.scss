@@ -1,0 +1,138 @@
+// -------------------------------------------------
+// + Core
+// -------------------------------------------------
+
+$color-white: var(--color-white);
+
+$color-gray-9: var(--color-gray-9);
+$color-gray-8: var(--color-gray-8);
+$color-gray-7: var(--color-gray-7);
+$color-gray-6: var(--color-gray-6);
+$color-gray-5: var(--color-gray-5);
+$color-gray-4: var(--color-gray-4);
+$color-gray-3: var(--color-gray-3);
+$color-gray-2: var(--color-gray-2);
+$color-gray-1: var(--color-gray-1);
+$color-gray-0: var(--color-gray-0);
+
+$color-hot-gray-8: var(--color-hot-gray-8);
+
+$color-yellow-9: var(--color-yellow-9);
+$color-yellow-8: var(--color-yellow-8);
+$color-yellow-7: var(--color-yellow-7);
+$color-yellow-6: var(--color-yellow-6);
+$color-yellow-5: var(--color-yellow-5);
+$color-yellow-4: var(--color-yellow-4);
+$color-yellow-3: var(--color-yellow-3);
+$color-yellow-2: var(--color-yellow-2);
+$color-yellow-1: var(--color-yellow-1);
+$color-yellow-0: var(--color-yellow-0);
+
+$color-teal-9: var(--color-teal-9);
+$color-teal-8: var(--color-teal-8);
+$color-teal-7: var(--color-teal-7);
+$color-teal-6: var(--color-teal-6);
+$color-teal-5: var(--color-teal-5);
+$color-teal-4: var(--color-teal-4);
+$color-teal-3: var(--color-teal-3);
+$color-teal-2: var(--color-teal-2);
+$color-teal-1: var(--color-teal-1);
+$color-teal-0: var(--color-teal-0);
+
+$color-hot-teal-2: var(--color-hot-teal-2);
+
+$color-red-9: var(--color-red-9);
+$color-red-8: var(--color-red-8);
+$color-red-7: var(--color-red-7);
+$color-red-6: var(--color-red-6);
+$color-red-5: var(--color-red-5);
+$color-red-4: var(--color-red-4);
+$color-red-3: var(--color-red-3);
+$color-red-2: var(--color-red-2);
+$color-red-1: var(--color-red-1);
+$color-red-0: var(--color-red-0);
+
+$color-green-9: var(--color-green-9);
+$color-green-8: var(--color-green-8);
+$color-green-7: var(--color-green-7);
+$color-green-6: var(--color-green-6);
+$color-green-5: var(--color-green-5);
+$color-green-4: var(--color-green-4);
+$color-green-3: var(--color-green-3);
+$color-green-2: var(--color-green-2);
+$color-green-1: var(--color-green-1);
+$color-green-0: var(--color-green-0);
+
+// -------------------------------------------------
+// + Base
+// -------------------------------------------------
+
+$color-hover: $color-gray-9;
+
+$color-primary: #0076FF;
+$color-primary-hover: $color-teal-4;
+$color-primary-active: $color-teal-4;
+$color-primary-light: $color-teal-9;
+$color-primary-light-hover: $color-teal-8;
+
+$color-secondary: $color-gray-9;
+$color-secondary-hover: $color-white;
+
+$color-danger: $color-red-2;
+$color-danger-hover: $color-red-4;
+$color-danger-active: $color-red-4;
+$color-danger-light: $color-red-9;
+$color-danger-light-hover: $color-red-8;
+
+$color-success: $color-green-2;
+$color-success-hover: $color-green-4;
+$color-success-active: $color-green-4;
+$color-success-light: $color-green-9;
+$color-success-light-hover: $color-green-8;
+
+$color-warning: $color-yellow-2;
+$color-warning-hover: $color-yellow-4;
+$color-warning-active: $color-yellow-4;
+$color-warning-light: $color-yellow-9;
+$color-warning-light-hover: $color-yellow-8;
+
+$color-info: $color-teal-2;
+$color-info-hover: $color-teal-4;
+$color-info-active: $color-teal-4;
+$color-info-light: $color-teal-9;
+$color-info-light-hover: $color-teal-8;
+
+// challenge
+
+$cc-gray-1: #E5E5EA;
+$cc-gray-2: #A0A4A8;
+$cc-gray-3: #F7F7F7;
+
+// -------------------------------------------------
+// + Body
+// -------------------------------------------------
+
+$color-body: $color-white;
+$body-bg-image: linear-gradient(to right, $color-body, $color-hot-gray-8);
+
+// -------------------------------------------------
+// + Text
+// -------------------------------------------------
+
+$color-text: var(--color-gray-1);
+$color-text-light: $cc-gray-2;
+$color-text-danger: $color-red-0;
+
+// -------------------------------------------------
+// + Input
+// -------------------------------------------------
+
+$color-input-background: $color-white;
+
+// -------------------------------------------------
+// + Button Secondary
+// -------------------------------------------------
+
+$c-btn-secondary: $color-gray-9;
+$c-btn-secondary-hover: $color-white;
+$c-btn-secondary-text: $color-text;
