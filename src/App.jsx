@@ -3,31 +3,22 @@ import { useState } from 'react'
 import './App.scss'
 import Input from './components/Input/Input'
 import SingleSelect from './components/SingleSelect/SingleSelect'
-import { useDispatch } from 'react-redux';
-import { addTemperature } from './store/modules/Temperature';
-import { useSelector } from 'react-redux';
 import ResultViewer from './components/ResultViewer/ResultViewer';
 import FormInput from './components/FormInput/FormInput';
 
 function App() {
-  // const temperature = useSelector(state => state.temperature)
-
-  const dispatch = useDispatch()
-
   const [formData, setFormData] = useState({
     grades: '',
     scale: null,
   })
-  
 
-  const [scaleSelectOptions, setScaleSelectOptions] = useState([
+  const [scaleSelectOptions] = useState([
     { value: 'celsius', text: 'Celsius' },
     { value: 'kelvin', text: 'Kelvin' },
   ]);
 
   function onGradesChange(event) {
     setFormData({ ...formData, grades: event.target.value })
-    dispatch(addTemperature, formData)
   }
 
   function onScaleChange(scale) {
@@ -36,11 +27,17 @@ function App() {
 
   return (
     <div className="ss-app">
-      <div className='ss-app-logo'>
-        <img src={logo} alt="temperature converter" />
+      <div data-testid="temperature-converter">
+        <div className='ss-app-logo'>
+          <img src={logo} alt="temperature converter" />
+        </div>
+        <h1
+          data-testid="title"
+          className='ss-app-title'
+        >
+          Temperature Converter:
+        </h1>
       </div>
-
-      <h1 className='ss-app-title'>Temperature Converter:</h1>
 
       <FormInput>
         <Input
@@ -48,6 +45,8 @@ function App() {
           onInput={onGradesChange}
           type="number"
           placeholder="Enter Value"
+          name="grades"
+          testId="grades"
         />
       </FormInput>
 
@@ -58,6 +57,7 @@ function App() {
           name="scale"
           onChange={onScaleChange}
           placeholder="Scale Selection"
+          testId="scale"
         />
       </FormInput>
 

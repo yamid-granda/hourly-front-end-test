@@ -13,6 +13,8 @@ const Input = forwardRef(({
   onKeyDown,
   placeholder,
   children,
+  name,
+  testId = 'input'
 }, ref) => {
   const inputRef = useRef()
 
@@ -71,6 +73,8 @@ const Input = forwardRef(({
         onKeyPress={onInputKeyPress}
         onKeyDown={onInputKeyDown}
         placeholder={placeholder}
+        name={name}
+        data-testid={testId}
       />
 
       <div className="ss-input__input-append">

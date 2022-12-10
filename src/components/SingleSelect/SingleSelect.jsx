@@ -12,6 +12,7 @@ export default function SingleSelect({
   name,
   onChange,
   placeholder,
+  testId = 'single-select'
 }) {
   // data
 
@@ -165,7 +166,9 @@ export default function SingleSelect({
   }
 
   function onScroll() {
-    setClientRect(singleSelectRef.current.getBoundingClientRect())
+    if (singleSelectRef?.current?.getBoundingClientRect) {
+      setClientRect(singleSelectRef.current.getBoundingClientRect())
+    }
   }
 
   function onClickOutside() {
@@ -245,6 +248,8 @@ export default function SingleSelect({
     <label
       key={`${option.value}${index}`}
       className={getOptionClasses(option, index)}
+      data-testid={`label-${option.value}`}
+      htmlFor={`${name}-${option.value}`}
     >
       <span className="ss-single-select__option-text">
         { option.text }
@@ -252,12 +257,13 @@ export default function SingleSelect({
 
       <input
         ref={radioRef}
+        id={`${name}-${option.value}`}
         name={name}
         value={option.value}
         type="radio"
         className="ss-single-select__option-input"
-        checked={option.value === value}
-        onChange={() => onOptionChange(option, index)}
+        data-testid={`option-${option.value}`}
+        onInput={() => onOptionChange(option, index)}
       />
     </label>
   ))
@@ -266,6 +272,7 @@ export default function SingleSelect({
     <div
       ref={singleSelectRef}
       className="ss-single-select"
+      data-testid={testId}
     >
       {/* Search */}
       <div className="ss-single-select__search">
@@ -278,6 +285,7 @@ export default function SingleSelect({
           onClick={onSearchClick}
           onKeyDown={onSearchKeyDown}
           placeholder={placeholder}
+          testId="search"
         >
           {{
             append: (
@@ -300,6 +308,7 @@ export default function SingleSelect({
             left: optionsPositions.left,
             width: optionsPositions.width,
           }}
+          data-testid={`${testId}-options`}
           onMouseEnter={onOptionsMouseEnter}
           onMouseLeave={onOptionsMouseLeave}
         >

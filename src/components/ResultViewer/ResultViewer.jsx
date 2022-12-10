@@ -38,15 +38,24 @@ export default function ResultViewer({
   }, [data])
 
   return (
-    <div className="ss-result-viewer">
-      <h1>Result</h1>
+    <div
+      className="ss-result-viewer"
+      data-testid="temperature-converter-result"
+    >
+      <h1 data-testid="title">Result</h1>
 
       <div className="ss-result_values">
-        <div className="ss-result_value">
+        <div
+          className="ss-result_value"
+          data-testid="celsius"
+        >
           Celsius: {temperatures.celsius}
         </div>
 
-        <div className="ss-result_value">
+        <div
+          className="ss-result_value"
+          data-testid="kelvin"
+        >
           Kelvin: {temperatures.kelvin}
         </div>
       </div>
