@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tdd": "vitest --config ./vitest.config.js",
+    "test": "vitest run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -17,10 +19,13 @@
     "redux": "^4.2.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "happy-dom": "^8.1.0",
     "sass": "^1.56.1",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vitest": "^0.25.6"
   }
 }
