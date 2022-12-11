@@ -1,5 +1,5 @@
-import classNames from "classnames"
-import { useEffect, useRef, forwardRef, useImperativeHandle, useMemo, useState } from "react"
+import classNames from 'classnames'
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import './Input.scss'
 
 const Input = forwardRef(({
@@ -14,14 +14,14 @@ const Input = forwardRef(({
   placeholder,
   children,
   name,
-  testId = 'input'
+  testId = 'input',
 }, ref) => {
   const inputRef = useRef()
 
-  const [isFocus, setIsFocus] = useState(false);
+  const [isFocus, setIsFocus] = useState(false)
 
   useImperativeHandle(ref, () => ({
-    getInputRef: () => inputRef
+    getInputRef: () => inputRef,
   }))
 
   const classes = useMemo(() => {
@@ -32,7 +32,9 @@ const Input = forwardRef(({
     })
   }, [isFocus])
 
-  useEffect(() => {inputRef.current.value = value}, [value]);
+  useEffect(() => {
+    inputRef.current.value = value
+  }, [value])
 
   function onInputInput(event) {
     onInput && onInput(event)

@@ -1,30 +1,29 @@
-import { useMemo } from "react"
-import { formatNumber } from "@/utils"
-import { parseCelsiusToKelvin, parseKelvinToCelsius } from "../../utils"
+import { useMemo } from 'react'
+import { parseCelsiusToKelvin, parseKelvinToCelsius } from '../../utils'
+import { formatNumber } from '@/utils'
 import './TemperatureResultViewer.scss'
 
 const scaleTranslatorsDic = {
-  kelvin: (grades) => ({
+  kelvin: grades => ({
     celsius: parseKelvinToCelsius(grades),
     kelvin: formatNumber(grades),
   }),
-  celsius: (grades) => ({
-    celsius: formatNumber(grades), 
+  celsius: grades => ({
+    celsius: formatNumber(grades),
     kelvin: parseCelsiusToKelvin(grades),
-  })
+  }),
 }
 
 export default function TemperatureResultViewer({
-  data
+  data,
 }) {
   const temperatures = useMemo(() => {
     const grades = parseFloat(data.grades)
     const scaleTranslator = scaleTranslatorsDic[data.scale]
     const allowsTranslation = data.scale && data.grades && scaleTranslator
-    
-    if (allowsTranslation) {
+
+    if (allowsTranslation)
       return scaleTranslator(grades)
-    }
 
     return {
       celsius: '0',

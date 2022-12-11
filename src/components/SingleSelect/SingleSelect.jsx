@@ -1,9 +1,9 @@
-import { useState, useMemo, useRef, useEffect } from "react"
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './SingleSelect.scss'
-import Input from "../Input/Input"
-import Portal from "../Portal/Portal"
+import classNames from 'classnames'
+import Input from '../Input/Input'
+import Portal from '../Portal/Portal'
 import { useMutationObservable } from '../../hooks/useMutationObservable'
-import classNames from "classnames"
 import caretDownIcon from '../../assets/caret-down-icon.svg'
 
 export default function SingleSelect({
@@ -12,16 +12,16 @@ export default function SingleSelect({
   name,
   onChange,
   placeholder,
-  testId = 'single-select'
+  testId = 'single-select',
 }) {
   // data
 
   const [searchText, setSearchText] = useState('')
-  const [isSearching, setIsSearching] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [clientRect, setClientRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
-  const [isMouseInOptions, setIsMouseInOptions] = useState(false);
-  const [focusOptionIndex, setFocusOptionIndex] = useState(0);
+  const [isSearching, setIsSearching] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [clientRect, setClientRect] = useState({ x: 0, y: 0, width: 0, height: 0 })
+  const [isMouseInOptions, setIsMouseInOptions] = useState(false)
+  const [focusOptionIndex, setFocusOptionIndex] = useState(0)
 
   // refs
 
@@ -32,9 +32,8 @@ export default function SingleSelect({
   // computed
 
   const filteredOptions = useMemo(() => {
-    if (!isSearching) {
+    if (!isSearching)
       return options
-    }
 
     return options.filter(option => option.text.includes(searchText))
   }, [options, searchText, isSearching])
@@ -42,7 +41,7 @@ export default function SingleSelect({
   const optionsPositions = useMemo(() => {
     const { x, y, width, height } = clientRect
     const top = y + height
-    const left = x;
+    const left = x
 
     return {
       x: `${x}px`,
@@ -57,18 +56,17 @@ export default function SingleSelect({
   const optionsClasses = useMemo(() => {
     return classNames({
       'ss-single-select__options-container': true,
-      'ss-single-select__options-container--hidden': !isOpen
+      'ss-single-select__options-container--hidden': !isOpen,
     })
   }, [isOpen])
 
   const optionsDic = useMemo(() => {
-    return options.reduce((dic, {value, text}) => {
+    return options.reduce((dic, { value, text }) => {
       const newDic = dic
       const existKey = Boolean(newDic[value])
 
-      if (existKey) {
+      if (existKey)
         return newDic
-      }
 
       newDic[value] = { text }
       return newDic
@@ -80,7 +78,7 @@ export default function SingleSelect({
   useEffect(() => {
     const searchTextToSet = optionsDic[value]?.text || ''
     setSearchText(searchTextToSet)
-  }, [value]);
+  }, [value])
 
   // events
 
@@ -98,9 +96,8 @@ export default function SingleSelect({
   }
 
   function onSearchBlur() {
-    if (isMouseInOptions) {
+    if (isMouseInOptions)
       return
-    }
 
     close()
   }
@@ -109,18 +106,17 @@ export default function SingleSelect({
     const { key } = event
 
     const eventsDic = {
-      'Enter': onEnterKeyPress,
-      'Escape': onEscapeKeyPress,
-      'ArrowDown': onArrowDownKeyPress,
-      'ArrowUp': onArrowUpKeyPress,
-      "Tab": close,
+      Enter: onEnterKeyPress,
+      Escape: onEscapeKeyPress,
+      ArrowDown: onArrowDownKeyPress,
+      ArrowUp: onArrowUpKeyPress,
+      Tab: close,
     }
 
     const keyEvent = eventsDic[key]
 
-    if (!keyEvent) {
+    if (!keyEvent)
       return
-    }
 
     keyEvent(event)
   }
@@ -147,11 +143,10 @@ export default function SingleSelect({
   }
 
   function onArrowUpKeyPress() {
-    if (isOpen) {
+    if (isOpen)
       decreaseOptionFocusIndex()
-    }
   }
-  
+
   function onOptionsMouseEnter() {
     setIsMouseInOptions(true)
   }
@@ -166,9 +161,8 @@ export default function SingleSelect({
   }
 
   function onScroll() {
-    if (singleSelectRef?.current?.getBoundingClientRect) {
+    if (singleSelectRef?.current?.getBoundingClientRect)
       setClientRect(singleSelectRef.current.getBoundingClientRect())
-    }
   }
 
   function onClickOutside() {
@@ -198,21 +192,18 @@ export default function SingleSelect({
   }
 
   function handleClickOutside(event) {
-    if (singleSelectRef.current && !singleSelectRef.current.contains(event.target)) {
-      onClickOutside();
-    }
+    if (singleSelectRef.current && !singleSelectRef.current.contains(event.target))
+      onClickOutside()
   };
 
   function increaseOptionFocusIndex() {
-    if (focusOptionIndex < options.length - 1) {
+    if (focusOptionIndex < options.length - 1)
       setFocusOptionIndex(focusOptionIndex + 1)
-    }
   }
 
   function decreaseOptionFocusIndex() {
-    if (focusOptionIndex > 0) {
+    if (focusOptionIndex > 0)
       setFocusOptionIndex(focusOptionIndex - 1)
-    }
   }
 
   function getOptionClasses(option, index) {
@@ -228,15 +219,15 @@ export default function SingleSelect({
   useEffect(() => {
     onScroll()
 
-    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
     document.addEventListener('click', handleClickOutside, true)
 
     return () => {
       window.removeEventListener('scroll', onScroll)
       document.removeEventListener('click', handleClickOutside, true)
-    };
-  }, []);
+    }
+  }, [])
 
   // hooks
 
@@ -294,7 +285,7 @@ export default function SingleSelect({
                   <img src={caretDownIcon} />
                 </div>
               </div>
-            )
+            ),
           }}
         </Input>
       </div>

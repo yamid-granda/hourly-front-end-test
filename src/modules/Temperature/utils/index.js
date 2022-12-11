@@ -1,5 +1,5 @@
-import { formatNumber } from "@/utils"
-import { KELVIN_CONSTANT } from "../configs"
+import { KELVIN_CONSTANT } from '../configs'
+import { formatNumber } from '@/utils'
 
 export function parseKelvinToCelsius(kelvin) {
   return formatNumber(kelvin - KELVIN_CONSTANT)

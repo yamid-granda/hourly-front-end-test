@@ -1,25 +1,25 @@
-import { render, screen, within, cleanup, fireEvent } from '@testing-library/react';
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 
 import TemperatureConverter from '../TemperatureConverter.jsx'
 
 beforeEach(() => {
   render(
     <div>
-      <TemperatureConverter root={root} />
+      <TemperatureConverter />
       <div id="portal"></div>
-    </div>
+    </div>,
   )
-});
+})
 
 afterEach(() => {
   cleanup()
-});
+})
 
 describe('temperature conversion', () => {
   it('on set Celsius shows Celsius and Kelvin', async () => {
     const gradesInput = screen.getByTestId('grades')
-    fireEvent.input(gradesInput, { target: { value: '123' }});
+    fireEvent.input(gradesInput, { target: { value: '123' } })
 
     const scaleSelect = screen.getByTestId('scale')
     const scaleSelectSearch = await within(scaleSelect).findByTestId('search')
@@ -27,7 +27,7 @@ describe('temperature conversion', () => {
 
     const scaleSelectOptions = screen.getByTestId('scale-options')
     const celsiusOption = await within(scaleSelectOptions).findByTestId('option-celsius')
-    fireEvent.input(celsiusOption);
+    fireEvent.input(celsiusOption)
 
     const celsiusOutput = screen.getByTestId('celsius')
     const kelvinOutput = screen.getByTestId('kelvin')
@@ -38,7 +38,7 @@ describe('temperature conversion', () => {
 
   it('on set Kelvin shows Celsius and Kelvin', async () => {
     const gradesInput = screen.getByTestId('grades')
-    fireEvent.input(gradesInput, { target: { value: '123' }});
+    fireEvent.input(gradesInput, { target: { value: '123' } })
 
     const scaleSelect = screen.getByTestId('scale')
     const scaleSelectSearch = await within(scaleSelect).findByTestId('search')
@@ -46,7 +46,7 @@ describe('temperature conversion', () => {
 
     const scaleSelectOptions = screen.getByTestId('scale-options')
     const kelvinOption = await within(scaleSelectOptions).findByTestId('option-kelvin')
-    fireEvent.input(kelvinOption);
+    fireEvent.input(kelvinOption)
 
     const celsiusOutput = screen.getByTestId('celsius')
     const kelvinOutput = screen.getByTestId('kelvin')
@@ -57,7 +57,7 @@ describe('temperature conversion', () => {
 
   it('when not has scale shows results as 0', async () => {
     const gradesInput = screen.getByTestId('grades')
-    fireEvent.input(gradesInput, { target: { value: '123' }});
+    fireEvent.input(gradesInput, { target: { value: '123' } })
 
     const celsiusOutput = screen.getByTestId('celsius')
     const kelvinOutput = screen.getByTestId('kelvin')
@@ -73,7 +73,7 @@ describe('temperature conversion', () => {
 
     const scaleSelectOptions = screen.getByTestId('scale-options')
     const kelvinOption = within(scaleSelectOptions).getByTestId('option-kelvin')
-    fireEvent.input(kelvinOption);
+    fireEvent.input(kelvinOption)
 
     const celsiusOutput = screen.getByTestId('celsius')
     const kelvinOutput = screen.getByTestId('kelvin')

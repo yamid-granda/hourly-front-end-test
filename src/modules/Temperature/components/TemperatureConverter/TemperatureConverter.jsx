@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState } from 'react'
+import TemperatureResultViewer from '../TemperatureResultViewer/TemperatureResultViewer'
 import logo from '@/assets/logo.svg'
 import FormInput from '@/components/FormInput/FormInput'
 import Input from '@/components/Input/Input'
 import SingleSelect from '@/components/SingleSelect/SingleSelect'
-import TemperatureResultViewer from "../TemperatureResultViewer/TemperatureResultViewer";
 import './TemperatureConverter.scss'
 
 const scaleSelectOptions = [
   { value: 'celsius', text: 'Celsius' },
   { value: 'kelvin', text: 'Kelvin' },
-];
+]
 
 export default function TemperatureConverter() {
   const [formData, setFormData] = useState({
