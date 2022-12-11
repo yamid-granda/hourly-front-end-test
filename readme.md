@@ -1,5 +1,7 @@
 # Temperature Converter
 
+**Important:** Check **video** explanation here https://drive.google.com/file/d/1xbq0vt3ZH74yg3KBJ8hlr1P7lvJcnGw1/view?usp=sharing
+
 ## Min Requirements
 
 - `Node.js >= @14 LTS` 
