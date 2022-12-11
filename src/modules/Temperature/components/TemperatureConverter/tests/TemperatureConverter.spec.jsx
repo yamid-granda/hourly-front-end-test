@@ -1,29 +1,23 @@
 import { render, screen, within, cleanup, fireEvent } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
-import App from './App.jsx'
-
-let unmountComponent
+import TemperatureConverter from '../TemperatureConverter.jsx'
 
 beforeEach(() => {
-  cleanup()
-  const { unmount } = render(
+  render(
     <div>
-      <App root={root} />
+      <TemperatureConverter root={root} />
       <div id="portal"></div>
     </div>
   )
-
-  unmountComponent = unmount
 });
 
 afterEach(() => {
-  unmountComponent()
   cleanup()
 });
 
-describe('Temperature Converter', () => {
-  it('on set Celsius value shows Celsius and Kelvin', async () => {
+describe('temperature conversion', () => {
+  it('on set Celsius shows Celsius and Kelvin', async () => {
     const gradesInput = screen.getByTestId('grades')
     fireEvent.input(gradesInput, { target: { value: '123' }});
 
@@ -42,7 +36,7 @@ describe('Temperature Converter', () => {
     expect(kelvinOutput.textContent).toBe('Kelvin: 396.15')
   })
 
-  it('on set Kelvin value shows Celsius and Kelvin', async () => {
+  it('on set Kelvin shows Celsius and Kelvin', async () => {
     const gradesInput = screen.getByTestId('grades')
     fireEvent.input(gradesInput, { target: { value: '123' }});
 
@@ -95,14 +89,17 @@ describe('Temperature Converter', () => {
     expect(celsiusOutput.textContent).toBe('Celsius: 0')
     expect(kelvinOutput.textContent).toBe('Kelvin: 0')
   })
+})
 
-  it('temperature converter has the right title', async () => {
+describe('literals', () => {
+  it('has the right title', async () => {
     const temperatureConverter = screen.getByTestId('temperature-converter')
-    const title = within(temperatureConverter).getByTestId('title')
+    const head = within(temperatureConverter).getByTestId('head')
+    const title = within(head).getByTestId('title')
     expect(title.textContent).toBe('Temperature Converter:')
   })
 
-  it('temperature converter result has the right title', async () => {
+  it('result has the right title', async () => {
     const temperatureConverter = screen.getByTestId('temperature-converter-result')
     const title = within(temperatureConverter).getByTestId('title')
     expect(title.textContent).toBe('Result')

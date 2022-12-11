@@ -1,25 +1,20 @@
 import { useMemo } from "react"
-import './Result.scss'
-
-const KELVIN_CONSTANT = 273.15
-
-function formatNumber(number) {
-  const numberFormatConfig = { useGrouping: false }
-  return new Intl.NumberFormat('en-US', numberFormatConfig).format(number)
-}
+import { formatNumber } from "@/utils"
+import { parseCelsiusToKelvin, parseKelvinToCelsius } from "../../utils"
+import './TemperatureResultViewer.scss'
 
 const scaleTranslatorsDic = {
   kelvin: (grades) => ({
-    celsius: formatNumber(grades - KELVIN_CONSTANT),
+    celsius: parseKelvinToCelsius(grades),
     kelvin: formatNumber(grades),
   }),
   celsius: (grades) => ({
     celsius: formatNumber(grades), 
-    kelvin: formatNumber(grades + KELVIN_CONSTANT),
+    kelvin: parseCelsiusToKelvin(grades),
   })
 }
 
-export default function ResultViewer({
+export default function TemperatureResultViewer({
   data
 }) {
   const temperatures = useMemo(() => {
