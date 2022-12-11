@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "@antfu"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "settings": {
+    "import/ignore": ["node_modules"]
+  }
+}
