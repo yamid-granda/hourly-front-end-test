@@ -19,7 +19,7 @@ afterEach(() => {
 describe('temperature conversion', () => {
   it('on set Celsius shows Celsius and Kelvin', async () => {
     const gradesInput = screen.getByTestId('grades')
-    fireEvent.input(gradesInput, { target: { value: '123' } })
+    fireEvent.input(gradesInput, { target: { value: '123.14' } })
 
     const scaleSelect = screen.getByTestId('scale')
     const scaleSelectSearch = await within(scaleSelect).findByTestId('search')
@@ -32,8 +32,8 @@ describe('temperature conversion', () => {
     const celsiusOutput = screen.getByTestId('celsius')
     const kelvinOutput = screen.getByTestId('kelvin')
 
-    expect(celsiusOutput.textContent).toBe('Celsius: 123')
-    expect(kelvinOutput.textContent).toBe('Kelvin: 396.15')
+    expect(celsiusOutput.textContent).toBe('Celsius: 123.14')
+    expect(kelvinOutput.textContent).toBe('Kelvin: 396.29')
   })
 
   it('on set Kelvin shows Celsius and Kelvin', async () => {

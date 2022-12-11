@@ -6,5 +6,5 @@ export function parseKelvinToCelsius(kelvin) {
 }
 
 export function parseCelsiusToKelvin(celsius) {
-  return celsius + KELVIN_CONSTANT
+  return formatNumber(celsius + KELVIN_CONSTANT)
 }
