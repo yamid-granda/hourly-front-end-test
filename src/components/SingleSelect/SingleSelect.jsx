@@ -35,7 +35,7 @@ export default function SingleSelect({
     if (!isSearching)
       return options
 
-    return options.filter(option => option.text.includes(searchText))
+    return options.filter(option => option.text.toLowerCase().includes(searchText.toLocaleLowerCase()))
   }, [options, searchText, isSearching])
 
   const optionsPositions = useMemo(() => {
