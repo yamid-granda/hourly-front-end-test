@@ -4,6 +4,7 @@ import FormInput from '@/components/FormInput/FormInput'
 import Input from '@/components/Input/Input'
 import SingleSelect from '@/components/SingleSelect/SingleSelect'
 import TemperatureResultViewer from "../TemperatureResultViewer/TemperatureResultViewer";
+import './TemperatureConverter.scss'
 
 const scaleSelectOptions = [
   { value: 'celsius', text: 'Celsius' },
@@ -33,13 +34,13 @@ export default function TemperatureConverter() {
         className="ss-temperature-converter__head"
         data-testid="head"
       >
-        <div className='ss-app-logo'>
+        <div className='ss-temperature-converter__logo'>
           <img src={logo} alt="temperature converter" />
         </div>
 
         <h1
           data-testid="title"
-          className='ss-app-title'
+          className='ss-temperature-converter__title'
         >
           Temperature Converter:
         </h1>

@@ -1,6 +1,5 @@
-@import './index.scss';
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500&display=swap');
+@import './index.scss';
 
 // -------------------------------------------------
 // + Base Reset Styles
@@ -14,7 +13,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  letter-spacing: 0.01em;
 }
 
 // -------------------------------------------------
@@ -35,6 +33,11 @@
 // li {
 //   margin: 0;
 // }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+}
 
 body {
   min-height: 100vh;
@@ -107,7 +110,7 @@ a:visited:hover {
 h1,
 h2,
 h3 {
-  font-weight: 600;
+  font-weight: $bold;
 }
 
 h1,
