@@ -9,6 +9,7 @@ import './TemperatureConverter.scss'
 const scaleSelectOptions = [
   { value: 'celsius', text: 'Celsius' },
   { value: 'kelvin', text: 'Kelvin' },
+  { value: 'fahrenheit', text: 'Fahrenheit' },
 ]
 
 export default function TemperatureConverter() {

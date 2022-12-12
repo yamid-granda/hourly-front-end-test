@@ -1,16 +1,30 @@
 import { useMemo } from 'react'
-import { parseCelsiusToKelvin, parseKelvinToCelsius } from '../../utils'
+import {
+  parseCelsiusToFahrenheit,
+  parseCelsiusToKelvin,
+  parseFahrenheitToCelsius,
+  parseFahrenheitToKelvin,
+  parseKelvinToCelsius,
+  parseKelvinToFahrenheit,
+} from '../../utils'
 import { formatNumber } from '@/utils'
 import './TemperatureResultViewer.scss'
 
 const scaleTranslatorsDic = {
-  kelvin: grades => ({
-    celsius: parseKelvinToCelsius(grades),
-    kelvin: formatNumber(grades),
-  }),
   celsius: grades => ({
     celsius: formatNumber(grades),
     kelvin: parseCelsiusToKelvin(grades),
+    fahrenheit: parseCelsiusToFahrenheit(grades),
+  }),
+  kelvin: grades => ({
+    celsius: parseKelvinToCelsius(grades),
+    kelvin: formatNumber(grades),
+    fahrenheit: parseKelvinToFahrenheit(grades),
+  }),
+  fahrenheit: grades => ({
+    celsius: parseFahrenheitToCelsius(grades),
+    kelvin: parseFahrenheitToKelvin(grades),
+    fahrenheit: formatNumber(grades),
   }),
 }
 
@@ -28,6 +42,7 @@ export default function TemperatureResultViewer({
     return {
       celsius: '0',
       kelvin: '0',
+      fahrenheit: '0',
     }
   }, [data])
 
@@ -51,6 +66,13 @@ export default function TemperatureResultViewer({
           data-testid="kelvin"
         >
           Kelvin: {temperatures.kelvin}
+        </div>
+
+        <div
+          className="ss-result_value"
+          data-testid="fahrenheit"
+        >
+          Fahrenheit: {temperatures.fahrenheit}
         </div>
       </div>
     </div>

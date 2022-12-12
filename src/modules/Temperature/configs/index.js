@@ -1,1 +1,3 @@
 export const KELVIN_CONSTANT = 273.15
+export const FAHRENHEIT_ADDER = 32
+export const FAHRENHEIT_MULTIPLIER = 1.8
