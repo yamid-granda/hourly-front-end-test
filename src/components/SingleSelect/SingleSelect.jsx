@@ -161,8 +161,7 @@ export default function SingleSelect({
   }
 
   function onScroll() {
-    if (singleSelectRef?.current?.getBoundingClientRect)
-      setClientRect(singleSelectRef.current.getBoundingClientRect())
+    calculateClientRect()
   }
 
   function onClickOutside() {
@@ -170,6 +169,10 @@ export default function SingleSelect({
   }
 
   // methods
+
+  function calculateClientRect() {
+    setClientRect(singleSelectRef?.current?.getBoundingClientRect())
+  }
 
   function setOption(option) {
     setIsSearching(false)
@@ -184,6 +187,7 @@ export default function SingleSelect({
   }
 
   function open() {
+    calculateClientRect()
     setIsOpen(true)
   }
 
@@ -194,7 +198,7 @@ export default function SingleSelect({
   function handleClickOutside(event) {
     if (singleSelectRef.current && !singleSelectRef.current.contains(event.target))
       onClickOutside()
-  };
+  }
 
   function increaseOptionFocusIndex() {
     if (focusOptionIndex < options.length - 1)
@@ -217,11 +221,11 @@ export default function SingleSelect({
   // life cycle
 
   useEffect(() => {
-    onScroll()
-
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
     document.addEventListener('click', handleClickOutside, true)
+
+    calculateClientRect()
 
     return () => {
       window.removeEventListener('scroll', onScroll)
@@ -231,7 +235,7 @@ export default function SingleSelect({
 
   // hooks
 
-  useMutationObservable(document, onScroll)
+  useMutationObservable(document, calculateClientRect)
 
   // templates
 
